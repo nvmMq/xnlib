@@ -3145,17 +3145,17 @@ function library:CreateWindow(name, hidebutton)
             configSystem.sector = tab:CreateSector("Configs", side or "left")
             local ConfigName = configSystem.sector:AddTextbox("Config Name", "", ConfigName, function()
             end, "")
-            local default = tostring(listfiles(configSystem.configFolder)[1] or ""):gsub(configSystem.configFolder .. "\\", ""):gsub(".txt", "")
+            local default = tostring(listfiles(configSystem.configFolder)[1] or ""):gsub(configSystem.configFolder .. "\\", ""):gsub(".cfg", "")
             local Config = configSystem.sector:AddDropdown("Configs", {}, default, false, function()
             end, "")
             for i, v in pairs(listfiles(configSystem.configFolder)) do
-                if v:find(".txt") then
-                    Config:Add(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".txt", ""))
+                if v:find(".cfg") then
+                    Config:Add(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".cfg", ""))
                 end
             end
             configSystem.Create = configSystem.sector:AddButton("Create", function()
                 for i, v in pairs(listfiles(configSystem.configFolder)) do
-                    Config:Remove(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".txt", ""))
+                    Config:Remove(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".cfg", ""))
                 end
                 if ConfigName:Get() and ConfigName:Get() ~= "" then
                     local config = {}
@@ -3178,10 +3178,10 @@ function library:CreateWindow(name, hidebutton)
                             end
                         end
                     end
-                    writefile(configSystem.configFolder .. "/" .. ConfigName:Get() .. ".txt", httpservice:JSONEncode(config))
+                    writefile(configSystem.configFolder .. "/" .. ConfigName:Get() .. ".cfg", httpservice:JSONEncode(config))
                     for i, v in pairs(listfiles(configSystem.configFolder)) do
-                        if v:find(".txt") then
-                            Config:Add(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".txt", ""))
+                        if v:find(".cfg") then
+                            Config:Add(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".cfg", ""))
                         end
                     end
                 end
@@ -3208,14 +3208,14 @@ function library:CreateWindow(name, hidebutton)
                             end
                         end
                     end
-                    writefile(configSystem.configFolder .. "/" .. Config:Get() .. ".txt", httpservice:JSONEncode(config))
+                    writefile(configSystem.configFolder .. "/" .. Config:Get() .. ".cfg", httpservice:JSONEncode(config))
                 end
             end)
             configSystem.Load = configSystem.sector:AddButton("Load", function()
-                local Success = pcall(readfile, configSystem.configFolder .. "/" .. Config:Get() .. ".txt")
+                local Success = pcall(readfile, configSystem.configFolder .. "/" .. Config:Get() .. ".cfg")
                 if (Success) then
                     pcall(function()
-                        local ReadConfig = httpservice:JSONDecode(readfile(configSystem.configFolder .. "/" .. Config:Get() .. ".txt"))
+                        local ReadConfig = httpservice:JSONDecode(readfile(configSystem.configFolder .. "/" .. Config:Get() .. ".cfg"))
                         local NewConfig = {}
                         for i, v in pairs(ReadConfig) do
                             if (typeof(v) == "table") then
@@ -3247,18 +3247,18 @@ function library:CreateWindow(name, hidebutton)
             end)
             configSystem.Delete = configSystem.sector:AddButton("Delete", function()
                 for i, v in pairs(listfiles(configSystem.configFolder)) do
-                    Config:Remove(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".txt", ""))
+                    Config:Remove(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".cfg", ""))
                 end
                 if (not Config:Get() or Config:Get() == "") then
                     return
                 end
-                if (not isfile(configSystem.configFolder .. "/" .. Config:Get() .. ".txt")) then
+                if (not isfile(configSystem.configFolder .. "/" .. Config:Get() .. ".cfg")) then
                     return
                 end
-                delfile(configSystem.configFolder .. "/" .. Config:Get() .. ".txt")
+                delfile(configSystem.configFolder .. "/" .. Config:Get() .. ".cfg")
                 for i, v in pairs(listfiles(configSystem.configFolder)) do
-                    if v:find(".txt") then
-                        Config:Add(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".txt", ""))
+                    if v:find(".cfg") then
+                        Config:Add(tostring(v):gsub(configSystem.configFolder .. "\\", ""):gsub(".cfg", ""))
                     end
                 end
             end)
