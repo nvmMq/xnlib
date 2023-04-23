@@ -3138,7 +3138,7 @@ local library = {
 			end)
 			function tab:CreateConfigSystem(side)
 				local configSystem = { }
-				configSystem.configFolder = window.name .. "/" .. tostring(game.Players.LocalPlayer.Name) .. "_BF"
+				configSystem.configFolder = window.name
 				if (not isfolder(configSystem.configFolder)) then
 					makefolder(tostring(configSystem.configFolder))
 				end
