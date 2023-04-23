@@ -9,7 +9,7 @@
 		getgenv().library:Unload()
 	end
 
-	local library = {design = getgenv().design == "kali" and "kali" or "Skylight", tabs = {}, draggable = true, flags = {}, title = "Skylight", open = false, mousestate = inputService.MouseIconEnabled, popup = nil, instances = {}, connections = {}, options = {}, notifications = {}, tabSize = 0, theme = {}, foldername = "uw_configs", fileext = ".uw"}
+	local library = {design = getgenv().design == "kali" and "kali" or "skylight", tabs = {}, draggable = true, flags = {}, title = "skylight", open = false, mousestate = inputService.MouseIconEnabled, popup = nil, instances = {}, connections = {}, options = {}, notifications = {}, tabSize = 0, theme = {}, foldername = "uw_configs", fileext = ".uw"}
 	getgenv().library = library
 
 	--Locals
@@ -2841,7 +2841,7 @@
 			Position = UDim2.new(0, 4, 0, 0),
 			Size = UDim2.new(0, 70, 0, 16),
 			BackgroundTransparency = 1,
-			Text = "Skylight",
+			Text = "skylight",
 			Font = Enum.Font.Gotham,
 			TextColor3 = Color3.fromRGB(255, 65, 65),
 			TextSize = 16,
