@@ -3145,7 +3145,7 @@ local library = {
 				configSystem.sector = tab:CreateSector("Configs", side or "left")
 				local ConfigName = configSystem.sector:AddTextbox("Config Name", "", ConfigName, function()
 				end, "")
-				local default = tostring(listfiles(configSystem.configFolder)[1] or "")
+				local default = tostring(listfiles(configSystem.configFolder)[1] or ""):gsub(configSystem.configFolder .. "\\", ""):gsub(".cfg", "")
 				local Config = configSystem.sector:AddDropdown("Configs", {}, default, false, function()
 				end, "")
 				for i, v in pairs(listfiles(configSystem.configFolder)) do
