@@ -2653,6 +2653,7 @@ Bracket.Elements = {
 		function Window:LoadConfig(FolderName, Name)
 			print(FolderName)
 			print(Name)
+			print(unpack(Bracket.Utilities.GetConfigs(FolderName)))
 			if table.find(Bracket.Utilities.GetConfigs(FolderName), Name) then
 				local DecodedJSON = HttpService:JSONDecode(readfile(FolderName .. "\\Configs\\" .. Name .. ".json"))
 
