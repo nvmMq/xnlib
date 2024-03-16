@@ -2970,7 +2970,9 @@ Bracket.Elements = {
 		Toggle:GetPropertyChangedSignal("Value"):Connect(function(Value)
 			Toggle.ColorConfig[1] = Value
 
-			ToggleAsset.Tick.BackgroundColor3 = Value and Window.Color or Color3.fromRGB(63, 63, 63)
+			if ToggleAsset.Tick ~= nil then
+				ToggleAsset.Tick.BackgroundColor3 = Value and Window.Color or Color3.fromRGB(63, 63, 63)
+			end
 
 			Window.Flags[Toggle.Flag] = Value
 			
