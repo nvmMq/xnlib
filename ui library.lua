@@ -703,7 +703,7 @@ Bracket.Assets = {
 		KeybindList.Name = "KeybindList"
 		KeybindList.ZIndex = 4
 		KeybindList.Visible = false
-		KeybindList.Size = UDim2.new(0, 121, 0, 246)
+		KeybindList.Size = UDim2.new(0, 240, 0, 120)
 		KeybindList.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		KeybindList.Position = UDim2.new(0, 10, 0.5, -123)
 		KeybindList.BorderSizePixel = 2
@@ -2578,7 +2578,7 @@ Bracket.Elements = {
 			KeybindList.Title = Bracket.Utilities:GetType(KeybindList.Title, "Keybinds", "string")
 
 			KeybindList.Position = Bracket.Utilities:GetType(KeybindList.Position, UDim2.new(0, 10, 0.5, -123), "UDim2")
-			KeybindList.Size = Bracket.Utilities:GetType(KeybindList.Size, UDim2.new(0, 180, 0, 120), "UDim2")
+			KeybindList.Size = Bracket.Utilities:GetType(KeybindList.Size, UDim2.new(0, 240, 0, 120), "UDim2")
 			KeybindList.List = Bracket.Screen.KeybindList.List
 
 			Bracket.Screen.KeybindList.Visible = KeybindList.Enabled
@@ -2588,7 +2588,7 @@ Bracket.Elements = {
 				KeybindList.Position = Position
 			end)
 
-			Bracket.Utilities.MakeResizeable(Bracket.Screen.KeybindList.Resize, Bracket.Screen.KeybindList, Vector2.new(180, 120), Vector2.new(896, 896), function(Size)
+			Bracket.Utilities.MakeResizeable(Bracket.Screen.KeybindList.Resize, Bracket.Screen.KeybindList, Vector2.new(240, 120), Vector2.new(896, 896), function(Size)
 				KeybindList.Size = Size
 			end)
 
