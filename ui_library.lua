@@ -4088,7 +4088,7 @@ function Bracket:Window(Window)
 					UpdateList(ConfigTextbox.Value)
 				end })
 
-				ConfigSection:Divider({ Text = "Configs" })
+				ConfigSection:Divider({ Text = "List" })
 
 				ConfigDropdown = ConfigSection:Dropdown({ HideName = true, IgnoreFlag = true, List = ConfigList })
 
@@ -4148,7 +4148,7 @@ function Bracket:Window(Window)
 					end
 				end })
 
-				ConfigSection:Button({ Name = "Remove Autoload", Callback = function()
+				ConfigSection:Button({ Name = "Clear Autoload", Callback = function()
 					Window:RemoveFromAutoLoad(FolderName)
 
 					ConfigDivider.Text = "Autoload"
